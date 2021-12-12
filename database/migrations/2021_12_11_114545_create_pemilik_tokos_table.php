@@ -13,7 +13,7 @@ class CreatePemilikTokosTable extends Migration
      */
     public function up()
     {
-        Schema::create('pemilik_tokos', function (Blueprint $table) {
+        Schema::create('pemilik_toko', function (Blueprint $table) {
             $table->id();
             $table->string('Email');
             $table->string('Nama');
@@ -31,6 +31,6 @@ class CreatePemilikTokosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pemilik_tokos');
+        Schema::dropIfExists('pemilik_toko');
     }
 }

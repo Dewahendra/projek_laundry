@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\Pemilik_tokoController;
+use App\Http\Controllers\API\PenggunaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +19,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('pemilik_toko',  [Pemilik_tokoController::class, 'index']);
+Route::get('pengguna',  [PenggunaController::class, 'index']);

@@ -1,23 +1,53 @@
 <template>
-    <div class="container">
+   <div class="container-fluid">
         <div class="row justify-content-center mt-5">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Data Pengguna</div>
-
-                    <div class="card-body">
-                        I'm an example component.
-                    </div>
-                </div>
+          <div class="col-md-10">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Data Pengguna</h3>
+              </div>
+              <div class="card-body">
+                <table class="table table-bordered text-center">
+                  <thead>
+                    <tr>
+                      <th>Email</th>
+                      <th>Nama</th>
+                      <th>Alamat</th>
+                      <th>No_Telepon</th>
+                      <th>Aksi</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr v-for="item in penggunas" :key="item.id">
+                    <td> {{item.Email}} </td>
+                    <td> {{item.Nama}} </td>
+                    <td> {{item.Alamat}} </td>
+                    <td> {{item.No_Telepon}} </td>
+                    <td>Edit | Hapus</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
+   </div>
 </template>
 
 <script>
     export default {
-        mounted() {
-            console.log('Component mounted.')
-        }
+       data() {
+    return {
+      penggunas: {}
+    };
+    },
+     methods: {
+    loadData(){
+     axios.get("api/pengguna").then(({ data }) => (this.penggunas = data));   
+    }
+    },
+    created(){
+        this.loadData();
+    }
     }
 </script>
