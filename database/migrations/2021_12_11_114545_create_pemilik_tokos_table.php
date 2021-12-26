@@ -15,11 +15,12 @@ class CreatePemilikTokosTable extends Migration
     {
         Schema::create('pemilik_toko', function (Blueprint $table) {
             $table->id();
-            $table->string('Email');
             $table->string('Nama');
-            $table->string('Nama_Toko');
             $table->string('Alamat');
             $table->string('No_Telepon');
+            $table->string('Nama_Toko');
+            $table->string('Email');
+            $table->string('Password');
             $table->timestamps();
         });
     }

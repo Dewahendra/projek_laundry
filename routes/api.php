@@ -20,5 +20,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('pemilik_toko',  [Pemilik_tokoController::class, 'index']);
-Route::get('pengguna',  [PenggunaController::class, 'index']);
+Route::resource('pemilik_toko', Pemilik_tokoController::class);
+Route::resource('pengguna', PenggunaController::class);

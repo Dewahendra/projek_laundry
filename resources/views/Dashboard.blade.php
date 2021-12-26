@@ -34,7 +34,7 @@
 </div>
 <!-- ./wrapper -->
 
-<!-- jQuery -->
+<!-- Script -->
 @include('Template.script')
 
 </body>

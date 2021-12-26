@@ -15,7 +15,8 @@ class Pemilik_tokoController extends Controller
      */
     public function index()
     {
-        return Pemilik_toko::all();
+        $data=Pemilik_toko::all();
+        return response()->json($data);
     }
 
     /**
@@ -36,7 +37,23 @@ class Pemilik_tokoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'Nama'=>'required',
+            'Alamat'=>'required',
+            'No_Telepon'=>'required',
+            'Nama_Toko'=>'required',
+            'Email'=>'required',
+            'Password'=>'required'
+        ]);
+
+        return Pemilik_toko::create([
+            'Nama'=>$request->Nama,
+            'Alamat'=>$request->Alamat,
+            'No_Telepon'=>$request->No_Telepon,
+            'Nama_Toko'=>$request->Nama_Toko,
+            'Email'=>$request->Email,
+            'Password'=>$request->Password,
+        ]);
     }
 
     /**
@@ -70,7 +87,26 @@ class Pemilik_tokoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'Nama'=>'required',
+            'Alamat'=>'required',
+            'No_Telepon'=>'required',
+            'Nama_Toko'=>'required',
+            'Email'=>'required',
+            'Password'=>'required'
+        ]);
+
+        $data = [
+            'Nama'=>$request->Nama,
+            'Alamat'=>$request->Alamat,
+            'No_Telepon'=>$request->No_Telepon,
+            'Nama_Toko'=>$request->Nama_Toko,
+            'Email'=>$request->Email,
+            'Password'=>$request->Password,
+        ];
+
+        $editData = Pemilik_toko::findOrFail($id);
+        $editData->update($data);
     }
 
     /**
@@ -81,6 +117,8 @@ class Pemilik_tokoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $hapus = Pemilik_toko::findOrFail($id);
+        $hapus->delete();
     }
+    
 }

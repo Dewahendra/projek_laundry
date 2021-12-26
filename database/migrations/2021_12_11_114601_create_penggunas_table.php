@@ -15,10 +15,11 @@ class CreatePenggunasTable extends Migration
     {
         Schema::create('pengguna', function (Blueprint $table) {
             $table->id();
-            $table->string('Email');
             $table->string('Nama');
             $table->string('Alamat');
             $table->string('No_Telepon');
+            $table->string('Email');
+            $table->string('Password');
             $table->timestamps();
         });
     }

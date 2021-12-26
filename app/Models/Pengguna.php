@@ -10,5 +10,5 @@ class Pengguna extends Model
     use HasFactory;
     protected $table = "pengguna";
     protected $primaryKey = "id";
-    protected $fillable = ['id', 'Email', 'Nama', 'Alamat', 'No_Telepon'];
+    protected $fillable = ['id', 'Nama', 'Alamat', 'No_Telepon', 'Email', 'Password'];
 }

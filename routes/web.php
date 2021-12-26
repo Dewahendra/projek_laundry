@@ -14,8 +14,8 @@ use App\Http\Controllers\DashboardController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('Dashboard');
-// });
+Route::get('/', function () {
+    return view('Dashboard');
+});
 
 Route::get('/{any}', [DashboardController::class, 'index'])->where('any', '.*');

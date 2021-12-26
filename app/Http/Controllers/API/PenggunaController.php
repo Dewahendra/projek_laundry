@@ -15,7 +15,8 @@ class PenggunaController extends Controller
      */
     public function index()
     {
-        return Pengguna::all();
+        $data=Pengguna::all();
+        return response()->json($data);
     }
 
     /**
@@ -36,7 +37,21 @@ class PenggunaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'Nama'=>'required',
+            'Alamat'=>'required',
+            'No_Telepon'=>'required',
+            'Email'=>'required',
+            'Password'=>'required'
+        ]);
+
+        return Pengguna::create([
+            'Nama'=>$request->Nama,
+            'Alamat'=>$request->Alamat,
+            'No_Telepon'=>$request->No_Telepon,
+            'Email'=>$request->Email,
+            'Password'=>$request->Password,
+        ]);
     }
 
     /**
@@ -70,7 +85,24 @@ class PenggunaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'Nama'=>'required',
+            'Alamat'=>'required',
+            'No_Telepon'=>'required',
+            'Email'=>'required',
+            'Password'=>'required'
+        ]);
+
+        $data = [
+            'Nama'=>$request->Nama,
+            'Alamat'=>$request->Alamat,
+            'No_Telepon'=>$request->No_Telepon,
+            'Email'=>$request->Email,
+            'Password'=>$request->Password,
+        ];
+
+        $editData = Pengguna::findOrFail($id);
+        $editData->update($data);
     }
 
     /**
@@ -81,6 +113,7 @@ class PenggunaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $hapus = Pengguna::findOrFail($id);
+        $hapus->delete();
     }
 }

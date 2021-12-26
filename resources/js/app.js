@@ -1,28 +1,50 @@
-require('./bootstrap');
+require("./bootstrap");
 
-window.Vue = require('vue').default;
+window.Vue = require("vue").default;
 
-import {Form, HasError, AlertError} from 'vform';
-window.Form  = Form;
+import { Form, HasError, AlertError } from "vform";
+window.Form = Form;
 
+let Fire = new Vue();
+window.Fire = Fire;
 
-import Vue from 'vue';
-import VueRouter from 'vue-router'
-Vue.use(VueRouter)
+//Import Alert
+import Swal from "sweetalert2";
+window.Swal = Swal;
+const Toast = Swal.mixin({
+    toast: true,
+    position: "top-end",
+    showConfirmButton: false,
+    timer: 3000,
+});
+window.Toast = Toast;
 
-let routes =[
-    { path: '/pemilik_toko', component:require('./components/Pemilik_toko.vue').default },
-    { path: '/pengguna', component:require('./components/Pengguna.vue').default }
-]
+import Vue from "vue";
+import VueRouter from "vue-router";
+Vue.use(VueRouter);
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+let routes = [
+    {
+        path: "/pemilik_toko",
+        component: require("./components/Pemilik_toko.vue").default,
+    },
+    {
+        path: "/pengguna",
+        component: require("./components/Pengguna.vue").default,
+    },
+];
+
+Vue.component(
+    "example-component",
+    require("./components/ExampleComponent.vue").default
+);
 
 const router = new VueRouter({
-    mode: 'history',
-    routes
-})
+    mode: "history",
+    routes,
+});
 
 const app = new Vue({
-    el: '#app',
-    router
+    el: "#app",
+    router,
 });

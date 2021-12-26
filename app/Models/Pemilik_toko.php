@@ -10,5 +10,5 @@ class Pemilik_toko extends Model
     use HasFactory;
     protected $table = "pemilik_toko";
     protected $primaryKey = "id";
-    protected $fillable = ['id', 'Email', 'Nama', 'Nama_Toko', 'Alamat', 'No_Telepon'];
+    protected $fillable = ['id', 'Nama', 'Alamat', 'No_Telepon', 'Nama_Toko', 'Email', 'Password'];
 }
